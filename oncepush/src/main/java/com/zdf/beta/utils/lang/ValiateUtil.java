@@ -2,7 +2,7 @@
  * Copyright (c) 2014, www.xinxindai.com All Rights Reserved. 
  *
  */
-package com.zdf.oncepush.utils.lang;
+package com.zdf.beta.utils.lang;
 
 import java.util.regex.Pattern;
 

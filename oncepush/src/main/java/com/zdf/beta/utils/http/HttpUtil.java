@@ -2,7 +2,7 @@
  * Copyright (c) 2014, www.xinxindai.com All Rights Reserved. 
  *
  */
-package com.zdf.oncepush.utils.http;
+package com.zdf.beta.utils.http;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

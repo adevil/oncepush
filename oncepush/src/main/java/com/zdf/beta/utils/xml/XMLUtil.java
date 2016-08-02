@@ -1,12 +1,12 @@
 /**
  * Copyright (c) 2014, www.xinxindai.com All Rights Reserved.
  */
-package com.zdf.oncepush.utils.xml;
+package com.zdf.beta.utils.xml;
 
 
 
 
-import com.zdf.oncepush.utils.lang.StringUtil;
+import com.zdf.beta.utils.lang.StringUtil;
 import org.apache.commons.lang3.StringEscapeUtils;
 
 /**

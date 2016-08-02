@@ -3,7 +3,7 @@
  */
 
 
-package com.zdf.oncepush.utils.io;
+package com.zdf.beta.utils.io;
 
 import java.io.*;
 import java.util.zip.GZIPInputStream;

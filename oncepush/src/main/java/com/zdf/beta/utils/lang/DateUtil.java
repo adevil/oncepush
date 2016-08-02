@@ -3,7 +3,7 @@
  *
  */
 
-package com.zdf.oncepush.utils.lang;
+package com.zdf.beta.utils.lang;
 
 
 import org.apache.commons.lang3.time.DateFormatUtils;

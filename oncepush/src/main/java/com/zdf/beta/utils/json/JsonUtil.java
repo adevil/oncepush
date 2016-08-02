@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2014, www.xinxindai.com All Rights Reserved.
  */
-package com.zdf.oncepush.utils.json;
+package com.zdf.beta.utils.json;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
