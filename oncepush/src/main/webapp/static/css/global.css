@@ -1,0 +1,42 @@
+
+html,body {
+    margin: 0;
+    height:100%;
+    overflow:hidden;
+    font-family: 'STHeiti', "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.leftnav {
+    height: 100%;
+    overflow: auto;
+    width: 200px;
+    float: left;
+    background-color:#313B44
+}
+
+.leftnav .list-group .list-group-item {
+    background: none;
+    border: 0;
+    color: #aaa;
+    padding: 18px 10px 18px 30px;
+}
+
+.leftnav .list-group .list-group-item .nav-name {
+    margin-left: 8px;
+}
+
+.leftnav .list-group .list-group-item.active,
+.leftnav .list-group .list-group-item:hover {
+    background-color: #495866;
+    color: #fff;
+}
+
+.leftnav .list-group .list-group-item .glyphicon {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+}
+
+.navbar{
+    margin-bottom: 0px;
+}
