@@ -13,7 +13,6 @@ import java.util.List;
 /**
  * JSON工具类
  *
- * @since jdk1.6
  * @version $Id: JsonUtil.java 6498 2014-09-24 03:34:59Z xiaoying $
  */
 public class JsonUtil {
