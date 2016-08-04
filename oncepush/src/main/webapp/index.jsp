@@ -41,7 +41,7 @@
 </body>
 <script>
     function test(){
-    location.href="https://api.weibo.com/oauth2/authorize?client_id=3420153323&scope=all&redirect_uri=http://www.oncepush.com/sina/interface/accredit/callback";
+    location.href="https://api.weibo.com/oauth2/authorize?client_id=3420153323&scope=all&redirect_uri=http://www.oncepush.com/sina/interface/accredit/callback.html";
     }
 </script>
 </html>

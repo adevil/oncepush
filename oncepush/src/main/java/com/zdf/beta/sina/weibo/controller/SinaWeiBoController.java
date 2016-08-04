@@ -1,8 +1,4 @@
-/***********************************************************************
- * Module:  SinaWeiBoController.java
- * Author:  y
- * Purpose: Defines the Class SinaWeiBoController
- ***********************************************************************/
+
 
 package com.zdf.beta.sina.weibo.controller;
 
@@ -10,6 +6,7 @@ import com.zdf.beta.utils.http.HttpClientUtil;
 import org.slf4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -30,6 +27,7 @@ public class SinaWeiBoController {
      * @return
      */
     @RequestMapping(value = "/accredit/callback")
+    @ResponseBody
     public String accreditCallBack(HttpServletRequest request) throws IOException, URISyntaxException {
         LOGGER.debug("/accredit/callback,{/accredit/callback:{code:{},status:{}}}",
                 request.getParameter("code"),request.getParameter("status"));
@@ -44,11 +42,11 @@ public class SinaWeiBoController {
         params.put("client_secret", "cc384e4503514e9e103a51bfcd256c82");
         params.put("grant_type", "authorization_code");
         params.put("code", code);
-        params.put("redirect_uri", "http://www.oncepush.com/oauth2/accesstoken/callback");
+        params.put("redirect_uri", "http://www.oncepush.com/oauth2/accesstoken/callback.html");
 
         //发送请求
-        URI uri = HttpClientUtil.buildURI("https://api.weibo.com/oauth2/access_token", params, "UTF-8");
-        return "forward:"+uri.toString();
+        HttpClientUtil.doPost("https://api.weibo.com/oauth2/access_token", params, "UTF-8");
+        return null;
     }
 
 
@@ -58,6 +56,7 @@ public class SinaWeiBoController {
      * @return
      */
     @RequestMapping(value = "/oauth2/accesstoken/callback")
+    @ResponseBody
     public String getOAuth2AccessTokenCallBack(HttpServletRequest request) {
         String access_token = request.getParameter("access_token");
         String expires_in = request.getParameter("expires_in");
