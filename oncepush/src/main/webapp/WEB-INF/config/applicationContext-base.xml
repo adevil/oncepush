@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:cache="http://www.springframework.org/schema/cache"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop 
+  		http://www.springframework.org/schema/aop/spring-aop.xsd
+
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
+
+
+    <!-- 默认的注解映射支持 -->
+    <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager"/>
+    <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+        <property name="favorPathExtension" value="false"/>
+        <property name="favorParameter" value="false"/>
+        <property name="ignoreAcceptHeader" value="false"/>
+        <property name="mediaTypes">
+            <value>
+                atom=application/atom+xml
+                html=text/html
+                json=application/json
+                *=*/*
+            </value>
+        </property>
+    </bean>
+
+    <aop:aspectj-autoproxy/>
+    <context:annotation-config/>
+    <context:component-scan base-package="com.zdf.beta"/>
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/"/>
+        <property name="suffix" value=".jsp"/>
+        <property name="redirectHttp10Compatible" value="false" />
+    </bean>
+
+    <mvc:view-controller path="/index" view-name="index"/>
+     <!--<bean id="exceptionResolver" class="com.xxdai.controller.CommonMappingExceptionResolver">  -->
+      <!--<property name="exceptionMappings">   -->
+        <!--<props>   -->
+          <!--&lt;!&ndash; <prop key="">error/500</prop>   &ndash;&gt; -->
+          <!--&lt;!&ndash; 可以自定义自己的异常 &ndash;&gt;-->
+          <!--<prop key="java.lang.Exception">common/error</prop>  -->
+          <!--<prop key=" java.lang.NullPointerException">common/error</prop>  -->
+       <!--</props>   -->
+     <!--</property>   -->
+    <!--</bean>-->
+
+</beans>

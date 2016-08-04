@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Map;
@@ -30,6 +31,9 @@ public class SinaWeiBoController {
      */
     @RequestMapping(value = "/accredit/callback")
     public String accreditCallBack(HttpServletRequest request) throws IOException, URISyntaxException {
+        LOGGER.debug("/accredit/callback,{/accredit/callback:{code:{},status:{}}}",
+                request.getParameter("code"),request.getParameter("status"));
+
         String code = request.getParameter("code");
         String status = request.getParameter("status");
 
@@ -37,19 +41,22 @@ public class SinaWeiBoController {
         //封装参数
         Map params = new HashMap();
         params.put("client_id", "3420153323");
-        params.put("client_id", "3420153323");
         params.put("client_secret", "cc384e4503514e9e103a51bfcd256c82");
         params.put("grant_type", "authorization_code");
         params.put("code", code);
-        params.put("redirect_uri", "http://www.oncepush.com/");
+        params.put("redirect_uri", "http://www.oncepush.com/oauth2/accesstoken/callback");
 
         //发送请求
-        String responseStr = HttpClientUtil.doGet("https://api.weibo.com/oauth2/access_token", params, "UTF-8");
-
-        return null;
+        URI uri = HttpClientUtil.buildURI("https://api.weibo.com/oauth2/access_token", params, "UTF-8");
+        return "forward:"+uri.toString();
     }
 
 
+    /**
+     * 获取accesstoken回调
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/oauth2/accesstoken/callback")
     public String getOAuth2AccessTokenCallBack(HttpServletRequest request) {
         String access_token = request.getParameter("access_token");

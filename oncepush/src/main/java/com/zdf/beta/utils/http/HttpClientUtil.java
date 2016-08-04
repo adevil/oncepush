@@ -17,6 +17,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,16 +49,13 @@ public class HttpClientUtil {
 
 
         try {
-            URIBuilder uriBuilder = new URIBuilder(url);
-            if (params != null) {
-                for (Map.Entry<String, String> entry : params.entrySet()) {
-                    uriBuilder.setParameter(entry.getKey(), entry.getValue());
-                }
-            }
+
+            URI uri = buildURI(url,params,encoding);
+
             //创建httpclient对象
             CloseableHttpClient httpclient = HttpClients.createDefault();
             //创建get方式请求对象
-            httpGet = new HttpGet(uriBuilder.build());
+            httpGet = new HttpGet(uri);
 
 
             //配置请求的超时设置
@@ -233,8 +231,23 @@ public class HttpClientUtil {
     }
 
 
-    public static void main(String[] args) throws IOException, URISyntaxException {
-        HttpClientUtil.doGet("http://www.xinxindai.com", null, "UTF-8");
+    /**
+     * 构建URI对象
+     * @param url
+     * @param params
+     * @param encoding
+     * @return
+     * @throws URISyntaxException
+     */
+    public static URI buildURI(String url, Map<String, String> params, String encoding) throws URISyntaxException {
+
+        URIBuilder uriBuilder = new URIBuilder(url);
+        if (params != null) {
+            for (Map.Entry<String, String> entry : params.entrySet()) {
+                uriBuilder.setParameter(entry.getKey(), entry.getValue());
+            }
+        }
+        return uriBuilder.build();
     }
 }
 
