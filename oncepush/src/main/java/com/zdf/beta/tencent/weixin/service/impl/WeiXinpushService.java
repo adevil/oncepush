@@ -1,7 +1,7 @@
-package com.zdf.beta.push.service.weixin;
+package com.zdf.beta.tencent.weixin.service.impl;
 
 
-import com.zdf.beta.push.service.PushService;
+import com.zdf.beta.tencent.weixin.service.PushService;
 
 /**
  * Created by Administrator on 2016/8/3.

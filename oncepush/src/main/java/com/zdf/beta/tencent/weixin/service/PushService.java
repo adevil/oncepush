@@ -1,4 +1,4 @@
-package com.zdf.beta.push.service;
+package com.zdf.beta.tencent.weixin.service;
 
 /**
  * Created by Administrator on 2016/8/3.

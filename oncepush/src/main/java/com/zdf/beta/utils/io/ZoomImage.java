@@ -20,8 +20,8 @@ import java.io.File;
 public class ZoomImage {
     public void ZoomTheImage(String fileUrl, String newUrl, int width, int height) throws IOUtilException {
         try {
-            java.io.File file = new java.io.File(fileUrl);         //读入刚才上传的文件
-            Image src = javax.imageio.ImageIO.read(file);
+            File file = new File(fileUrl);         //读入刚才上传的文件
+            Image src = ImageIO.read(file);
             //构造Image对象
 
             BufferedImage tag = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
