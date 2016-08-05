@@ -14,6 +14,18 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
 
+    <!-- properties加载 -->
+    <bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="locations">
+            <list>
+                <value>classpath*:thirdParty.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
+        <property name="properties" ref="configProperties"/>
+    </bean>
 
     <!-- 默认的注解映射支持 -->
     <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager"/>
@@ -38,19 +50,19 @@
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/"/>
         <property name="suffix" value=".jsp"/>
-        <property name="redirectHttp10Compatible" value="false" />
+        <property name="redirectHttp10Compatible" value="false"/>
     </bean>
 
     <mvc:view-controller path="/index" view-name="index"/>
-     <!--<bean id="exceptionResolver" class="com.xxdai.controller.CommonMappingExceptionResolver">  -->
-      <!--<property name="exceptionMappings">   -->
-        <!--<props>   -->
-          <!--&lt;!&ndash; <prop key="">error/500</prop>   &ndash;&gt; -->
-          <!--&lt;!&ndash; 可以自定义自己的异常 &ndash;&gt;-->
-          <!--<prop key="java.lang.Exception">common/error</prop>  -->
-          <!--<prop key=" java.lang.NullPointerException">common/error</prop>  -->
-       <!--</props>   -->
-     <!--</property>   -->
+    <!--<bean id="exceptionResolver" class="com.xxdai.controller.CommonMappingExceptionResolver">  -->
+    <!--<property name="exceptionMappings">   -->
+    <!--<props>   -->
+    <!--&lt;!&ndash; <prop key="">error/500</prop>   &ndash;&gt; -->
+    <!--&lt;!&ndash; 可以自定义自己的异常 &ndash;&gt;-->
+    <!--<prop key="java.lang.Exception">common/error</prop>  -->
+    <!--<prop key=" java.lang.NullPointerException">common/error</prop>  -->
+    <!--</props>   -->
+    <!--</property>   -->
     <!--</bean>-->
 
 </beans>

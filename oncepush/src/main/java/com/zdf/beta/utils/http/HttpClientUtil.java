@@ -40,7 +40,7 @@ public class HttpClientUtil {
      * @throws IOException
      */
     public static String doGet(String url, Map<String, String> params, String encoding) throws IOException, URISyntaxException {
-        LOGGER.info("do get request : [params:{url:{},encoding:{}}]", url, encoding);
+        LOGGER.info("do get request : [params:{url:{},params:{},encoding:{}}]", url,JsonUtil.beanToJson(params), encoding);
 
         String jsonStr = null;
         HttpGet httpGet = null;
@@ -100,7 +100,7 @@ public class HttpClientUtil {
      * @throws IOException
      */
     public static String doPost(String url, Map<String, String> params, String encoding) throws IOException, URISyntaxException {
-        LOGGER.info("do post request : [params:{url:{},encoding:{}}]", url, encoding);
+        LOGGER.info("do post request : [params:{url:{},params：{},encoding:{}}]", url,JsonUtil.beanToJson(params), encoding);
 
         String jsonStr = null;
         HttpPost httpPost = null;
@@ -137,9 +137,8 @@ public class HttpClientUtil {
 
 
             //设置请求头
-            httpPost.setHeader("Content-type", "application/x-www-form-urlencoded");
+            httpPost.setHeader("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
             httpPost.setHeader("User-Agent", "Mozilla/4.0 (compatible; MSIE 5.0; Windows NT; DigExt)");
-
 
             //执行请求操作，并拿到结果（同步阻塞）
             response = httpclient.execute(httpPost);

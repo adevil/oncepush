@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <%@ page language="java" pageEncoding="utf-8" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <c:set var="ctx" value="${pageContext.request.contextPath}"/>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap test</title>
-    <link href="static/css/bootstrap.min.css" rel="stylesheet">
-    <link href="static/css/global.css" rel="stylesheet">
+    <title>多发信息科技</title>
+    <link href="${ctx}/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${ctx}/static/css/global.css" rel="stylesheet">
+    <link href="${ctx}/static/plugins/themes/default/css/ueditor.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="${ctx}/static/plugins/third-party/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="${ctx}/static/plugins/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="${ctx}/static/plugins/ueditor.all.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="${ctx}/static/plugins/lang/zh-cn/zh-cn.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -36,12 +42,14 @@
     </div>
 </div>
 <div class="float:right">
-    <button onclick="test();">微博登录授权测试</button>
+    <div>
+        <h3>编辑您的微博内容</h3>
+        <script id="editor" type="text/plain" style="width:900px;height:500px;"></script>
+    </div>
 </div>
 </body>
-<script>
-    function test(){
-    location.href="https://api.weibo.com/oauth2/authorize?client_id=3420153323&scope=all&redirect_uri=http://www.oncepush.com/sina/interface/accredit/callback.html";
-    }
+<script type="text/javascript">
+    var basePath =  '${cxt}';
+    var ue = UE.getEditor('editor');
 </script>
 </html>

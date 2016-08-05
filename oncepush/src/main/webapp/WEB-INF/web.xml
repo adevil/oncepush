@@ -1,33 +1,41 @@
-<!DOCTYPE web-app PUBLIC
-        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
-        "http://java.sun.com/dtd/web-app_2_3.dtd" >
+<?xml version="1.0" encoding="UTF-8"?>
 
-<web-app>
-  <display-name>df oncepush</display-name>
+<web-app  version="3.0"
+        xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+    <display-name>df oncepush</display-name>
 
-  <context-param>
-  <param-name>contextConfigLocation</param-name>
-  <param-value>/WEB-INF/config/applicationContext-base.xml;</param-value>
-  </context-param>
-  <listener>
-  <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-  </listener>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/config/applicationContext-base.xml;</param-value>
+    </context-param>
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
 
-  <servlet>
-  <servlet-name>zdf</servlet-name>
-  <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-  <init-param>
-  <param-name>contextConfigLocation</param-name>
-  <param-value>/WEB-INF/config/applicationContext-base.xml</param-value>
-  </init-param>
-  <load-on-startup>1</load-on-startup>
-  </servlet>
-  <servlet-mapping>
-  <servlet-name>zdf</servlet-name>
-  <url-pattern>*.html</url-pattern>
-  </servlet-mapping>
+    <servlet>
+        <servlet-name>zdf</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/config/applicationContext-base.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>zdf</servlet-name>
+        <url-pattern>*.html</url-pattern>
+    </servlet-mapping>
 
-
+    <jsp-config>
+        <jsp-property-group>
+            <url-pattern>*.jsp</url-pattern>
+            <el-ignored>false</el-ignored>
+            <page-encoding>utf-8</page-encoding>
+            <scripting-invalid>true</scripting-invalid>
+        </jsp-property-group>
+    </jsp-config>
 
 </web-app>
 
