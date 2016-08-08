@@ -40,3 +40,10 @@ html,body {
 .navbar{
     margin-bottom: 0px;
 }
+
+.content{
+    float: left;
+    overflow: auto;
+    height: 100%;
+    width: calc(100% - 200px);
+}
