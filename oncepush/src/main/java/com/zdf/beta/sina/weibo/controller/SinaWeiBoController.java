@@ -36,6 +36,8 @@ public class SinaWeiBoController {
     @Value("${sina_access_token}")
     private String accessToken;
 
+    @Value("${sina_uid}")
+    private String uid;
 
     /**
      * 授权回调
@@ -84,7 +86,7 @@ public class SinaWeiBoController {
 
         Map params = new HashMap();
         params.put("access_token", accessToken);
-        params.put("status",  "test测试123001");//限制140字内
+        params.put("status", "test测试123001");//限制140字内
         params.put("visible", "0");//微博的可见性，0：所有人能看，1：仅自己可见，2：密友可见，3：指定分组可见，默认为0
 
         //发送请求N
@@ -93,6 +95,29 @@ public class SinaWeiBoController {
         //todo对应登录后页面
         return "/index";
     }
+
+
+    /**
+     * access_token	true	string	采用OAuth授权方式为必填参数，OAuth授权后获得。
+     * uid	false	int64	需要查询的用户ID。
+     * screen_name	false	string	需要查询的用户昵称。
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/userInfo")
+    public String getUserInfo(HttpServletRequest request) throws IOException, URISyntaxException {
+        String url = "https://api.weibo.com/2/users/show.json";
+
+        Map params = new HashMap();
+        params.put("access_token", accessToken);
+        params.put("uid", uid);
+        //发送请求
+        String body = HttpClientUtil.doGet(url, params, "UTF-8");
+        request.setAttribute("userInfo", body);
+        return "userInfo";
+    }
+
 
 
 }
