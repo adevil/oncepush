@@ -48,19 +48,19 @@
     <context:component-scan base-package="com.zdf.beta"/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/"/>
+        <property name="prefix" value="/WEB-INF/pages/"/>
         <property name="suffix" value=".jsp"/>
         <property name="redirectHttp10Compatible" value="false"/>
     </bean>
 
+    <bean name="/index.html"  class="org.springframework.web.servlet.mvc.UrlFilenameViewController"/>
+    <bean name="/"  class="org.springframework.web.servlet.mvc.UrlFilenameViewController"/>
+    <bean name="/editWeibo.html"  class="org.springframework.web.servlet.mvc.UrlFilenameViewController"/>
+
+
+
     <!-- 开发时使用 -->
     <mvc:resources mapping="/static/**" location="/static/" />
-
-    <mvc:view-controller path="/index" view-name="index"/>
-    <mvc:view-controller path="/" view-name="index"/>
-    <mvc:view-controller path="/editWeibo" view-name="editWeibo"/>
-
-
 
     <!--<bean id="exceptionResolver" class="com.xxdai.controller.CommonMappingExceptionResolver">  -->
     <!--<property name="exceptionMappings">   -->

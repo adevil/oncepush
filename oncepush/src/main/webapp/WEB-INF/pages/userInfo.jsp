@@ -12,8 +12,8 @@
 
 </head>
 <body>
-<jsp:include page="common/top.jsp"/>
-<jsp:include page="common/left.jsp"/>
+<jsp:include page="/common/top.jsp"/>
+<jsp:include page="/common/left.jsp"/>
 <div class="float:right">
    <%--<div id="userInfo"></div>--%>
        ${userInfo}

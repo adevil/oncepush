@@ -11,8 +11,8 @@
     <link href="${ctx}/static/css/global.css" rel="stylesheet">
 </head>
 <body>
-<jsp:include page="common/top.jsp"/>
-<jsp:include page="common/left.jsp"/>
+<jsp:include page="/common/top.jsp"/>
+<jsp:include page="/common/left.jsp"/>
 <div class="float:right">
     <button onclick="test();">微博登录授权测试</button>
 </div>

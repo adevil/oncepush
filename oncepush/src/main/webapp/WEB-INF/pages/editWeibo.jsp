@@ -16,8 +16,8 @@
     <script type="text/javascript" charset="utf-8" src="${ctx}/static/plugins/lang/zh-cn/zh-cn.js"></script>
 </head>
 <body>
-<jsp:include page="common/top.jsp"/>
-<jsp:include page="common/left.jsp"/>
+<jsp:include page="/common/top.jsp"/>
+<jsp:include page="/common/left.jsp"/>
 <div class="content">
     <div align="center">
         <h3>编辑您的微博内容</h3>
