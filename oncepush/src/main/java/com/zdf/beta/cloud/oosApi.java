@@ -1,27 +1,28 @@
 package com.zdf.beta.cloud;
 
+import org.springframework.beans.factory.annotation.Value;
+
+import java.io.File;
+import java.io.IOException;
+
 /**
  * Created by 13764 on 2016/8/9.
  */
-public abstract class oosApi implements cloudApi {
+public interface OOSApi {
 
-    //云服务商密钥
-    private String privateKey;
 
-    public String getPrivateKey() {
-        return privateKey;
-    }
-
-    public void setPrivateKey(String privateKey) {
-        this.privateKey = privateKey;
-    }
 
 
     /**
-     * 普通上传
+     * 普通文件上传(单文件)
+     * @param path
+     * @param file
      * @return
+     * @throws IOException
      */
-    public abstract String upload();
+    public String simpleFileUpload(String path, File file) throws IOException;
+
+
 
 
 }

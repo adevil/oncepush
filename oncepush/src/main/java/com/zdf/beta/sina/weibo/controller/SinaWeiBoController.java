@@ -2,6 +2,7 @@
 
 package com.zdf.beta.sina.weibo.controller;
 
+import com.zdf.beta.appframe.consts.AppConsts;
 import com.zdf.beta.utils.http.HttpClientUtil;
 import com.zdf.beta.utils.lang.StringUtil;
 import org.slf4j.Logger;
@@ -58,8 +59,13 @@ public class SinaWeiBoController {
         params.put("code", code);
         params.put("redirect_uri", "http://www.oncepush.com/sina/interface/accredit/callback.html");
 
-        //发送请求N
-        String body = HttpClientUtil.doPost("https://api.weibo.com/oauth2/access_token", params, "UTF-8");
+        //请求头参数
+        Map<String, String> header = new HashMap();
+        header.put("Content-type", "application/x-www-form-urlencoded");
+        header.put("User-Agent", "Mozilla/4.0 (compatible; MSIE 5.0; Windows NT; DigExt)");
+
+        //发送请求
+        String body = HttpClientUtil.doPost("https://api.weibo.com/oauth2/access_token", params, header, AppConsts.APP_ENCODING);
 
         //todo对应登录后页面
         return "/index";
@@ -84,13 +90,19 @@ public class SinaWeiBoController {
     public String pushWeibo(HttpServletRequest request) throws IOException, URISyntaxException {
         String url = "https://api.weibo.com/2/statuses/update.json";
 
-        Map params = new HashMap();
+        //请求参数
+        Map<String, String> params = new HashMap();
         params.put("access_token", accessToken);
         params.put("status", "test测试123001");//限制140字内
         params.put("visible", "0");//微博的可见性，0：所有人能看，1：仅自己可见，2：密友可见，3：指定分组可见，默认为0
 
+        //请求头参数
+        Map<String, String> header = new HashMap();
+        header.put("Content-type", "application/x-www-form-urlencoded");
+        header.put("User-Agent", "Mozilla/4.0 (compatible; MSIE 5.0; Windows NT; DigExt)");
+
         //发送请求N
-        String body = HttpClientUtil.doPost(url, params, "UTF-8");
+        String body = HttpClientUtil.doPost(url, params, header, AppConsts.APP_ENCODING);
 
         //todo对应登录后页面
         return "/index";
@@ -113,11 +125,10 @@ public class SinaWeiBoController {
         params.put("access_token", accessToken);
         params.put("uid", uid);
         //发送请求
-        String body = HttpClientUtil.doGet(url, params, "UTF-8");
+        String body = HttpClientUtil.doGet(url, params, AppConsts.APP_ENCODING);
         request.setAttribute("userInfo", body);
         return "userInfo";
     }
-
 
 
 }
