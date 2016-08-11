@@ -1,5 +1,9 @@
 package com.zdf.beta.cloud.ucloud.oos;
 
+import cn.ucloud.ufile.UFileClient;
+import cn.ucloud.ufile.UFileRequest;
+import cn.ucloud.ufile.UFileResponse;
+import cn.ucloud.ufile.sender.PutSender;
 import com.zdf.beta.appframe.consts.AppConsts;
 import com.zdf.beta.cloud.OOSApi;
 import com.zdf.beta.cloud.exception.CloudApiCallException;
@@ -7,16 +11,18 @@ import com.zdf.beta.utils.http.ContentTypeMap;
 import com.zdf.beta.utils.http.HttpClientUtil;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.http.Header;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
+import java.io.*;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
 /**
@@ -25,95 +31,87 @@ import java.util.*;
 @Service
 public class UFileUploaderApi implements OOSApi {
 
-    private Logger LOGGER = LoggerFactory.getLogger(this.getClass());
+    private static Logger LOGGER = LoggerFactory.getLogger(UFileUploaderApi.class);
 
-
-    //云服务商密钥
-    @Value("${ucloud_private_key}")
-    private String privateKey;
-
-    //云服务商公钥
-    @Value("${ucloud_public_key}")
-    private String publicKey;
-
-    //UFILE服务器域名
-    @Value("${ucloud_ufile_domain_name}")
-    private String UFILE_HOST;
-
-    @Value("${ucloud_bucket_name}")
+    @Value("${ucloud_ufile_bucket_name}")
     private String bucket_name;
 
     /**
-     * PUT /<key_name> HTTP/1.1
-     * Host: <bucket_name>.ufile.ucloud.cn
-     * Authorization: <token>
-     * Content-Length: <length>
-     * Content-Type: <mimetype>
-     * Content-MD5: <md5>
+     * 普通单文件上传到OOS
      *
-     * @param dirPath 存放的目录文件夹
+     * @param saveDirPath 存放的目录文件夹开头不能有“/”
      * @param file
      * @return
      */
-    public String simpleFileUpload(String dirPath, File file) throws IOException {
-        LOGGER.info("simple file upload start : {params:{path:{},file:{}}}", dirPath, file);
+    public String putFile(String saveDirPath, File file) throws IOException, InvalidKeyException, NoSuchAlgorithmException {
 
-        if (file == null) {
-            LOGGER.error("simple file upload error : file object is null :{params:{path:{},file:{}}}", dirPath, file);
-            throw new CloudApiCallException();
+        UFileRequest request = new UFileRequest();
+        request.setBucketName(bucket_name);
+        request.setKey(saveDirPath + file.getName());
+        request.setFilePath(file.getPath());
+
+        UFileClient ufileClient = null;
+        try {
+            ufileClient = new UFileClient();
+            ufileClient.setConfigPath("");
+            putFile(ufileClient, request);
+        } finally {
+            ufileClient.shutdown();
         }
-
-        //计算Content-MD5
-        FileInputStream fis = new FileInputStream(file);
-        byte[] bytes = DigestUtils.md5(fis);
-        String contentMd5 = Base64.encodeBase64String(bytes);
-        //获取内容类型
-        String contentType = ContentTypeMap.EXT_TO_CONTENT_TYPE.get(file.getName().substring(file.getName().lastIndexOf(".") + 1));
-
-        this.getSignature(dirPath, file, contentMd5, contentType, new Date());
-
-
-        //设置请求头参数
-        Map<String, String> header = new HashMap<String, String>();
-        //todo String url = UFILE_HOST +  + file.getName();
-        String url = null;
-        //header.put("Authorization", );
-        header.put("Content-Length", String.valueOf(file.length()));
-        header.put("Content-MD5", contentMd5);
-        //获取内容类型
-        header.put("Content-Type", contentType);
-        List<File> files = new ArrayList<File>();
-        files.add(file);
-        return HttpClientUtil.doMultiPost(url, null, null, files, AppConsts.APP_ENCODING);
-
+        return null;
     }
 
 
     /**
-     * 获取文件管理签名
+     * 调用ucloud接口上传文件
      *
-     * @return
-     * @throws IOException
+     * @param ufileClient
+     * @param request
      */
-    private String getSignature(String dirPath, File file, String contentMd5, String contentType, Date date) {
+    private static String putFile(UFileClient ufileClient, UFileRequest request) {
+        String responseStr = null;
 
+        //生成签名
+        PutSender sender = new PutSender();
+        sender.makeAuth(ufileClient, request);
 
-        String key = dirPath+file.getName();
-//        String http_verb = "PUT"
-//        content_md5 = ""
-//        content_type = "image/jpeg"
-//        date = ""
-//        canonicalized_ucloud_headers = "x-ucloud-foo:foo" + "\n" + "x-ucloud-bar:bar1,bar2" + \n"
-//        canonicalized_resource = "/" + "demobucket" + "/" + "demokey"
-//        string2sign = "PUT" + "\n"
-//                + "" + "\n"
-//                + "image/jpg" + "\n"
-//                + "" + "\n"
-//                + "x-ucloud-foo:foo" + "\n" + "x-ucloud-bar:bar1,bar2" + "\n"
-//                + "/demobucket/demokey"
+        //推送数据
+        UFileResponse response = sender.send(ufileClient, request);
+        if (response != null) {
+            return responseStr;
+        }
 
-        return null;
+        InputStream inputStream = response.getContent();
+        if (inputStream != null) {
+            return responseStr;
+        }
+
+        try {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+
+            while ((responseStr = reader.readLine()) != null) {
+                LOGGER.debug(responseStr);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (inputStream != null) {
+                try {
+                    inputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return responseStr;
     }
+
+
+
+
+
 
 
 }

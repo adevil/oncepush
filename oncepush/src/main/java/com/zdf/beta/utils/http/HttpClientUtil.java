@@ -11,6 +11,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.entity.ContentType;
+import org.apache.http.entity.FileEntity;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.entity.mime.content.StringBody;
@@ -37,7 +38,6 @@ import java.util.Map;
 public class HttpClientUtil {
 
     private static Logger LOGGER = LoggerFactory.getLogger(HttpClientUtil.class);
-
 
 
     /**
@@ -133,77 +133,6 @@ public class HttpClientUtil {
 
             //设置参数到请求对象中
             httpPost.setEntity(new UrlEncodedFormEntity(nvps, encoding));
-
-            //创建httpclient对象
-            CloseableHttpClient httpclient = HttpClients.createDefault();
-
-            //设置请求头
-            setRequestHeader(httpPost, header);
-
-            //执行请求操作，并拿到结果（同步阻塞）
-            response = httpclient.execute(httpPost);
-
-            //获取结果实体
-            httpEntity = response.getEntity();
-            if (httpEntity != null) {
-                //按指定编码转换结果实体为String类型
-                jsonStr = EntityUtils.toString(httpEntity, encoding);
-                LOGGER.debug("call {} ; response body: {}", url, jsonStr);
-            }
-        } finally {
-            closeHttpClientResource(httpEntity, httpPost, response);
-        }
-
-        return jsonStr;
-    }
-
-
-    /**
-     * 单个文件的post传输
-     *
-     * @param url
-     * @param params
-     * @param header
-     * @param encoding
-     * @param files
-     * @return
-     * @throws IOException
-     */
-    public static String doMultiPost(String url, Map<String, String> params, Map<String, String> header, List<File> files, String encoding) throws IOException {
-        LOGGER.debug("do post request : [params:{url:{},params：{},encoding:{}}]", url, JsonUtil.beanToJson(params), encoding);
-
-        String jsonStr = null;
-        HttpPost httpPost = null;
-        CloseableHttpResponse response = null;
-        HttpEntity httpEntity = null;
-        MultipartEntityBuilder meBuilder = null;
-
-        try {
-
-            //创建post方式请求对象
-            httpPost = new HttpPost(url);
-            meBuilder = MultipartEntityBuilder.create();
-
-            //装填普通文本参数
-            if (params != null) {
-                for (Map.Entry<String, String> entry : params.entrySet()) {
-                    meBuilder.addPart(entry.getKey(), new StringBody(entry.getValue(), ContentType.TEXT_PLAIN));
-                }
-            }
-
-            //装填传输文件的参数
-            if (files != null && files.size() > 0) {
-                for (File file : files) {
-                    meBuilder.addPart(file.getName(), new FileBody(file));
-                }
-            }
-
-
-            //创建httpEntity
-            httpEntity = meBuilder.build();
-
-            //设置参数到请求对象中
-            httpPost.setEntity(httpEntity);
 
             //创建httpclient对象
             CloseableHttpClient httpclient = HttpClients.createDefault();

@@ -23,6 +23,7 @@
         <jstl.version>1.2</jstl.version>
         <httpclient.version>4.5.2</httpclient.version>
         <mime.version>4.5.2</mime.version>
+        <gson.version>2.3.1</gson.version>
 
         <spring.version>4.3.2.RELEASE</spring.version>
         <aspectj.version>1.5.4</aspectj.version>
@@ -59,6 +60,15 @@
         </dependency>
 
 
+        <!-- ucloud ufile sdk start -->
+        <dependency>
+            <groupId>ucloud-ufile-sdk</groupId>
+            <artifactId>ufile</artifactId>
+            <version>1.0.0</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/ufile_sdk.jar</systemPath>
+        </dependency>
+        <!-- ucloud ufile sdk end-->
         <!-- ueditor jar start -->
         <dependency>
             <groupId>com.baidu.ueditor</groupId>
@@ -159,6 +169,11 @@
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>${jstl.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>${gson.version}</version>
         </dependency>
         <!-- utils jar end -->
     </dependencies>

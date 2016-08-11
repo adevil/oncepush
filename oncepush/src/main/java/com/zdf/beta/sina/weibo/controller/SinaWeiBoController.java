@@ -3,19 +3,25 @@
 package com.zdf.beta.sina.weibo.controller;
 
 import com.zdf.beta.appframe.consts.AppConsts;
+import com.zdf.beta.cloud.ucloud.oos.UFileUploaderApi;
+import com.zdf.beta.cloud.ucloud.util.UcloudUtil;
 import com.zdf.beta.utils.http.HttpClientUtil;
 import com.zdf.beta.utils.lang.StringUtil;
 import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URLEncoder;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,6 +45,9 @@ public class SinaWeiBoController {
 
     @Value("${sina_uid}")
     private String uid;
+
+    @Autowired
+    private UFileUploaderApi uFileUploaderApi;
 
     /**
      * 授权回调
@@ -128,6 +137,20 @@ public class SinaWeiBoController {
         String body = HttpClientUtil.doGet(url, params, AppConsts.APP_ENCODING);
         request.setAttribute("userInfo", body);
         return "userInfo";
+    }
+
+
+    /**
+     * 图片上传测试
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/uploadTest")
+    public String uploadTest(HttpServletRequest request) throws NoSuchAlgorithmException, InvalidKeyException, IOException {
+        File file = new File("F:/54DA.tmp.png");
+        uFileUploaderApi.putFile("static/img/",file);
+        return "/index";
     }
 
 
