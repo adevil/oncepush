@@ -45,6 +45,7 @@ public class UFileUploaderApi implements OOSApi {
      */
     public String putFile(String saveDirPath, File file) throws IOException, InvalidKeyException, NoSuchAlgorithmException {
 
+        //设置bucketName,key(文件名),本地文件路径
         UFileRequest request = new UFileRequest();
         request.setBucketName(bucket_name);
         request.setKey(saveDirPath + file.getName());
