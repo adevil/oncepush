@@ -4,26 +4,14 @@ import cn.ucloud.ufile.UFileClient;
 import cn.ucloud.ufile.UFileRequest;
 import cn.ucloud.ufile.UFileResponse;
 import cn.ucloud.ufile.sender.PutSender;
-import com.zdf.beta.appframe.consts.AppConsts;
-import com.zdf.beta.cloud.OOSApi;
-import com.zdf.beta.cloud.exception.CloudApiCallException;
-import com.zdf.beta.utils.http.ContentTypeMap;
-import com.zdf.beta.utils.http.HttpClientUtil;
-import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.http.Header;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import javax.crypto.Mac;
-import javax.crypto.spec.SecretKeySpec;
 import java.io.*;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
-import java.util.*;
 
 /**
  * Created by 13764 on 2016/8/10.
