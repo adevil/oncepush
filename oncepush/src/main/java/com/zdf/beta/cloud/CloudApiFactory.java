@@ -1,5 +1,7 @@
 package com.zdf.beta.cloud;
 
+import com.zdf.beta.cloud.ucloud.OOSApi;
+
 /**
  * Created by 13764 on 2016/8/10.
  */

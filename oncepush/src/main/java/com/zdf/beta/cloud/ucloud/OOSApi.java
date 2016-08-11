@@ -1,4 +1,4 @@
-package com.zdf.beta.cloud.ucloud.util;
+package com.zdf.beta.cloud.ucloud;
 
 import java.io.File;
 import java.io.IOException;
