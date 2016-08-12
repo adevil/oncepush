@@ -15,7 +15,7 @@
     </listener>
 
     <servlet>
-        <servlet-name>zdf</servlet-name>
+        <servlet-name>duofa</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
@@ -24,7 +24,7 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
-        <servlet-name>zdf</servlet-name>
+        <servlet-name>duofa</servlet-name>
         <url-pattern>*.html</url-pattern>
     </servlet-mapping>
 
