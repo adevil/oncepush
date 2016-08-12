@@ -1,6 +1,6 @@
-package com.zdf.beta.cloud.exception;
+package com.duofa.oncepush.cloud.exception;
 
-import com.zdf.beta.appframe.exception.AppframeException;
+import com.duofa.oncepush.appframe.exception.AppframeException;
 
 /**
  * Created by 13764 on 2016/8/10.

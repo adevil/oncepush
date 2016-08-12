@@ -1,10 +1,10 @@
-package com.zdf.beta.cloud.ucloud.oos;
+package com.duofa.oncepush.cloud.ucloud.oos;
 
 import cn.ucloud.ufile.UFileClient;
 import cn.ucloud.ufile.UFileRequest;
 import cn.ucloud.ufile.UFileResponse;
 import cn.ucloud.ufile.sender.PutSender;
-import com.zdf.beta.cloud.ucloud.OOSApi;
+import com.duofa.oncepush.cloud.ucloud.OOSApi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;

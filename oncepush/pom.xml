@@ -7,7 +7,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.zdf.oncepush</groupId>
+    <groupId>com.duofa.oncepush</groupId>
     <artifactId>oncepush</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>

@@ -1,4 +1,4 @@
-package com.zdf.beta.appframe.exception;
+package com.duofa.oncepush.appframe.exception;
 
 /**
  * Created by 13764 on 2016/8/10.

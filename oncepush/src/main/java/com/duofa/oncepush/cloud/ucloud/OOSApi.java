@@ -1,4 +1,4 @@
-package com.zdf.beta.cloud.ucloud;
+package com.duofa.oncepush.cloud.ucloud;
 
 import java.io.File;
 import java.io.IOException;

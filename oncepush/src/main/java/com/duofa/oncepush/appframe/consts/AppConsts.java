@@ -1,4 +1,4 @@
-package com.zdf.beta.appframe.consts;
+package com.duofa.oncepush.appframe.consts;
 
 /**
  * Created by 13764 on 2016/8/10.

@@ -1,6 +1,6 @@
-package com.zdf.beta.cloud;
+package com.duofa.oncepush.cloud;
 
-import com.zdf.beta.cloud.ucloud.OOSApi;
+import com.duofa.oncepush.cloud.ucloud.OOSApi;
 
 /**
  * Created by 13764 on 2016/8/10.

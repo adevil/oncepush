@@ -1,9 +1,9 @@
 
 
-package com.zdf.beta.sina.weibo.controller;
+package com.duofa.oncepush.sina.weibo.controller;
 
-import com.zdf.beta.appframe.consts.AppConsts;
-import com.zdf.beta.cloud.ucloud.oos.UFileUploaderApi;
+import com.duofa.oncepush.appframe.consts.AppConsts;
+import com.duofa.oncepush.cloud.ucloud.oos.UFileUploaderApi;
 import com.duofa.util.http.HttpClientUtil;
 import com.duofa.util.lang.StringUtil;
 import org.slf4j.Logger;

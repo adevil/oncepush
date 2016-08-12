@@ -4,7 +4,7 @@
  * Purpose: Defines the Class SinaWeiBoSearchService
  ***********************************************************************/
 
-package com.zdf.beta.sina.weibo.service.sinaweibo;
+package com.duofa.oncepush.sina.weibo.service.sinaweibo;
 
 public class SinaWeiBoSearchService {
 
