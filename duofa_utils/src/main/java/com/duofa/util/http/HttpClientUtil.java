@@ -1,7 +1,7 @@
-package com.zdf.beta.utils.http;
+package com.duofa.util.http;
 
 
-import com.zdf.beta.utils.json.JsonUtil;
+import com.duofa.util.json.JsonUtil;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.config.RequestConfig;

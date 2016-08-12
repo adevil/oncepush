@@ -2,7 +2,7 @@
  * Copyright (c) 2014, www.xinxindai.com All Rights Reserved. 
  *
  */
-package com.zdf.beta.utils.config;
+package com.duofa.util.config;
 
 import java.util.ResourceBundle;
 

@@ -3,7 +3,7 @@
  *
  */
 
-package com.zdf.beta.utils.lang;
+package com.duofa.util.lang;
 
 
 import org.apache.commons.lang3.time.DateFormatUtils;

@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2014, www.xinxindai.com All Rights Reserved.
  */
-package com.zdf.beta.utils.io;
+package com.duofa.util.io;
 
 /**
  * 应用IO异常类

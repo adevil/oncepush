@@ -3,7 +3,7 @@
  */
 
 
-package com.zdf.beta.utils.io;
+package com.duofa.util.io;
 
 import java.io.*;
 import java.util.zip.GZIPInputStream;
