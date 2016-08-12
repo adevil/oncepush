@@ -78,7 +78,7 @@ $(function () {
         console.log(ue.getContent());
         $.ajax({
             type: "post",
-            url: "/sina/interface//pushWeibo.html",
+            url: "/sina/interface/pushWeibo.html",
             data: {content:ue.getContentTxt()},
             dataType: "json",
             success: function(data){
