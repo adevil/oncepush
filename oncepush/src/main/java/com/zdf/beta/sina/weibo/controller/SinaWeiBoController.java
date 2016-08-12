@@ -96,13 +96,19 @@ public class SinaWeiBoController {
      * @return
      */
     @RequestMapping(value = "/pushWeibo")
-    public String pushWeibo(HttpServletRequest request) throws IOException, URISyntaxException {
+    @ResponseBody
+    public String pushWeibo(String content,HttpServletRequest request) throws IOException, URISyntaxException {
+        if(StringUtil.isBlank(content)){
+            return "403";
+        }
+
+
         String url = "https://api.weibo.com/2/statuses/update.json";
 
         //请求参数
         Map<String, String> params = new HashMap();
         params.put("access_token", accessToken);
-        params.put("status", "test测试123001");//限制140字内
+        params.put("status", content);//内容限制140字内
         params.put("visible", "0");//微博的可见性，0：所有人能看，1：仅自己可见，2：密友可见，3：指定分组可见，默认为0
 
         //请求头参数
@@ -114,7 +120,7 @@ public class SinaWeiBoController {
         String body = HttpClientUtil.doPost(url, params, header, AppConsts.APP_ENCODING);
 
         //todo对应登录后页面
-        return "/index";
+        return body;
     }
 
 

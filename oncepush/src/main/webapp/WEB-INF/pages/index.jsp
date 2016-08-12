@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>多发信息科技</title>
-    <link href="${ctx}/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${ctx}/static/css/lib/bootstrap.min.css" rel="stylesheet">
     <link href="${ctx}/static/css/global.css" rel="stylesheet">
 </head>
 <body>

@@ -47,3 +47,20 @@ html,body {
     height: 100%;
     width: calc(100% - 200px);
 }
+
+
+.submit-div{
+    width: 97%;
+    float: right;
+}
+
+.place-right{
+    margin-top:10px;
+    margin-bottom:10px;
+    margin-right:25px;
+    float: right; !important;
+}
+
+.btn{
+    margin-right:5px;
+}

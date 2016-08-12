@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>多发信息科技</title>
-    <link href="${ctx}/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${ctx}/static/css/lib/bootstrap.min.css" rel="stylesheet">
     <link href="${ctx}/static/css/global.css" rel="stylesheet">
 
 </head>
@@ -20,7 +20,7 @@
 </div>
 </body>
 </html>
-<script type="text/javascript" src="${ctx}/static/js/jquery-3.1.0.min.js"></script>
+<script type="text/javascript" src="${ctx}/static/js/lib/jquery-3.1.0.min.js"></script>
 <script>
     $(function () {
         $("#userInfo").html(syntaxHighlight('${request.userInfo}'));
