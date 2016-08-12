@@ -1,6 +1,6 @@
 
 
-package com.duofa.oncepush.sina.weibo.controller;
+package com.duofa.oncepush.push.controller;
 
 import com.duofa.oncepush.appframe.consts.AppConsts;
 import com.duofa.oncepush.cloud.ucloud.oos.UFileUploaderApi;
@@ -73,7 +73,7 @@ public class SinaWeiBoController {
         //发送请求
         String body = HttpClientUtil.doPost("https://api.weibo.com/oauth2/access_token", params, header, AppConsts.APP_ENCODING);
 
-        //todo对应登录后页面
+        //todo对应登录后面
         return "/index";
     }
 
