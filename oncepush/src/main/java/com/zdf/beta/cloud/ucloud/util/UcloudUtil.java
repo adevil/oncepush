@@ -1,7 +1,7 @@
 package com.zdf.beta.cloud.ucloud.util;
 
 import com.zdf.beta.cloud.exception.CloudApiCallException;
-import com.zdf.beta.utils.json.JsonUtil;
+import com.duofa.util.json.JsonUtil;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.http.client.utils.URIBuilder;
 import org.slf4j.Logger;
