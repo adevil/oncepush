@@ -1,6 +1,12 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.duofa.parent</groupId>
+        <artifactId>duofa_parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
     <groupId>com.zdf.oncepush</groupId>
     <artifactId>oncepush</artifactId>
     <packaging>war</packaging>
@@ -10,110 +16,43 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-        <commons-lang3.version>3.3.2</commons-lang3.version>
-        <commons-codec.version>1.9</commons-codec.version>
-        <commons-httpclient.version>3.1</commons-httpclient.version>
-        <commons-beanutils.version>1.9.2</commons-beanutils.version>
-        <commons-fileupload.version>1.3.1</commons-fileupload.version>
-        <commons-io.version>2.4</commons-io.version>
-        <fastjson.version>1.1.41</fastjson.version>
-        <slf4j.version>1.7.21</slf4j.version>
-        <log4j.version>1.2.17</log4j.version>
-        <jsp-api.version>2.3.1</jsp-api.version>
-        <servlet-api.version>3.1.0</servlet-api.version>
-        <jstl.version>1.2</jstl.version>
-        <httpclient.version>4.5.2</httpclient.version>
-        <mime.version>4.5.2</mime.version>
-        <gson.version>2.3.1</gson.version>
-
-
     </properties>
 
     <dependencies>
 
+        <dependency>
+            <groupId>com.duofa.util</groupId>
+            <artifactId>duofa_utils</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
 
         <!-- ucloud ufile sdk start -->
         <dependency>
             <groupId>cn.ucloud.ufile</groupId>
             <artifactId>ufile_sdk</artifactId>
-            <version>1.0</version>
+            <version>${ufile_sdk.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>${gson.version}</version>
         </dependency>
         <!-- ucloud ufile sdk end-->
+
         <!-- ueditor jar start -->
         <dependency>
             <groupId>com.baidu.ueditor</groupId>
             <artifactId>ueditor_sdk</artifactId>
-            <version>1.1.2</version>
+            <version>${ueditor.version}</version>
         </dependency>
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
-            <version>20160212</version>
+            <version>${org.json.version}</version>
         </dependency>
         <!-- ueditor jar end -->
 
-        <!-- utils jar start -->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${commons-lang3.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-httpclient</groupId>
-            <artifactId>commons-httpclient</artifactId>
-            <version>${commons-httpclient.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-beanutils</groupId>
-            <artifactId>commons-beanutils</artifactId>
-            <version>${commons-beanutils.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-codec</groupId>
-            <artifactId>commons-codec</artifactId>
-            <version>${commons-codec.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-fileupload</groupId>
-            <artifactId>commons-fileupload</artifactId>
-            <version>${commons-fileupload.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>${commons-io.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>${httpclient.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpmime</artifactId>
-            <version>${mime.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>${fastjson.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
+
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>javax.servlet.jsp-api</artifactId>
@@ -131,23 +70,13 @@
             <artifactId>jstl</artifactId>
             <version>${jstl.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>${gson.version}</version>
-        </dependency>
-        <!-- utils jar end -->
+
     </dependencies>
 
     <build>
         <finalName>oncepush</finalName>
     </build>
 
-    <repositories>
-        <repository>
-            <id>idoufa-maven-repo</id>
-            <url>https://raw.githubusercontent.com/soliars/iduofaMavenRepo/master/repo/</url>
-        </repository>
-    </repositories>
+
 
 </project>

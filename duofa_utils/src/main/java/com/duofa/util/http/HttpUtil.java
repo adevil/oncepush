@@ -4,8 +4,6 @@
  */
 package com.duofa.util.http;
 
-import org.apache.commons.lang3.StringEscapeUtils;
-
 import javax.servlet.http.HttpServletRequest;
 
 /**
