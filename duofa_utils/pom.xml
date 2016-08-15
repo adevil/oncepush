@@ -19,13 +19,6 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>${servlet-api.version}</version>
-            <scope>provided</scope>
-        </dependency>
-
         <!-- utils jar start -->
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -88,8 +81,14 @@
             <version>${log4j.version}</version>
         </dependency>
         <!-- utils jar end -->
-    </dependencies>
 
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>${org.json.version}</version>
+        </dependency>
+
+    </dependencies>
 
 
 </project>
