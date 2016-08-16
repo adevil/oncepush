@@ -2,10 +2,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.duofa.sina</groupId>
-    <artifactId>sina_weibo4j</artifactId>
+    <artifactId>duofa_sina</artifactId>
     <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>sina_weibo4j</name>
+    <name>duofa_sina</name>
     <url>http://maven.apache.org</url>
 
 

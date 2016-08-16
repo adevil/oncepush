@@ -11,6 +11,7 @@
     <modules>
         <module>duofa_frame</module>
         <module>duofa_utils</module>
+        <module>duofa_sina</module>
     </modules>
 
 

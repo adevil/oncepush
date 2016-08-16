@@ -18,6 +18,7 @@
         <property name="locations">
             <list>
                 <value>classpath*:push_medium.properties</value>
+                <value>classpath*:jdbc.properties</value>
             </list>
         </property>
     </bean>

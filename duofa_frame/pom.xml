@@ -76,7 +76,13 @@
         </dependency>
         <!-- jdbc pool end -->
 
-
+        <!-- jdbc driver start -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.39</version>
+        </dependency>
+        <!-- jdbc driver end -->
     </dependencies>
 
 

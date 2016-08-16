@@ -23,8 +23,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>weibo4j</groupId>
-            <artifactId>sina_weibo4j</artifactId>
+            <groupId>com.duofa.sina</groupId>
+            <artifactId>duofa_sina</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
