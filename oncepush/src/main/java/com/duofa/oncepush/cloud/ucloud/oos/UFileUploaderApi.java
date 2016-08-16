@@ -22,8 +22,8 @@ public class UFileUploaderApi implements OOSApi {
 
     private static Logger LOGGER = LoggerFactory.getLogger(UFileUploaderApi.class);
 
-    @Value("${ucloud_ufile_bucket_name}")
-    private String bucket_name;
+    // todo 暂时这样，之后修改uflesdk配置
+    private String bucket_name = "oncepush";
 
     /**
      * 普通单文件上传到OOS
