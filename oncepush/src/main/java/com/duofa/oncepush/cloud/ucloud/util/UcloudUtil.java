@@ -1,16 +1,12 @@
 package com.duofa.oncepush.cloud.ucloud.util;
 
-import com.duofa.oncepush.cloud.exception.CloudApiCallException;
-import com.duofa.util.json.JsonUtil;
-import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.http.client.utils.URIBuilder;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URISyntaxException;
-import java.net.URLEncoder;
-import java.util.*;
+
 
 /**
  * Created by 13764 on 2016/8/10.
