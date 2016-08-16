@@ -17,8 +17,7 @@
     <bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
         <property name="locations">
             <list>
-                <value>classpath*:thirdParty.properties</value>
-                <value>classpath*:thiredOperator.properties</value>
+                <value>classpath*:pushMedium.properties</value>
             </list>
         </property>
     </bean>

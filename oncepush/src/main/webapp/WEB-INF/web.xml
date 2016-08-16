@@ -8,7 +8,10 @@
 
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/config/applicationContext.xml;</param-value>
+        <param-value>
+            /WEB-INF/config/applicationContext.xml,
+            /WEB-INF/config/mybatisContext.xml
+        </param-value>
     </context-param>
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -36,7 +39,6 @@
             <scripting-invalid>false</scripting-invalid>
         </jsp-property-group>
     </jsp-config>
-
 </web-app>
 
 
